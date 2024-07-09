@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.auth {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("./asset/bgMain.jpg");
+  background-position: center;
+  background-size: cover;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.bgImg {
+  position: fixed;
+}
+.logMain {
+  height: 50vh;
+  width: 30vw;
+}
+.active {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  color: rgb(251, 146, 60, 1);
+}
+.footer {
+  bottom: 0;
+  height: 30rem;
+}
+.fa {
+  border-radius: 10%;
+  font-size: 18px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  border: 2px solid white;
+  padding: 16px;
+  margin: 0 6px;
+}
+
+.fa-facebook {
+  color: white;
+}
