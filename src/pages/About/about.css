@@ -1,0 +1,56 @@
+.AboutPageMainContainer {
+  position: relative;
+  min-height: 90vh;
+}
+.backgroundfilter {
+  margin: 0 2rem 0 2rem;
+  border-radius: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80vh;
+  background: url("../../asset/bgAbout.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  filter: brightness(20%);
+  z-index: -1;
+}
+
+.contentCont {
+  height: 50vh;
+  width: 100vh;
+  position: relative;
+  text-align: center;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.h1PicCard {
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+}
+
+.pPicCard {
+  margin: 2rem;
+  font-size: 1rem;
+  color: white;
+}
+
+.aboutimg {
+  box-shadow: 2px 4px 8px grey;
+  border-radius: 12px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.FAIcons {
+  font-size: 4rem;
+  color: rgb(251 146 60 );
+}

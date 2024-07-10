@@ -17,8 +17,8 @@
     0,
     0,
     0.5
-  ); /* Background color with desired opacity */
-  filter: brightness(40%); /* Adjust the filter as needed */
+  ); 
+  filter: brightness(40%);
   z-index: -1;
 }
 
