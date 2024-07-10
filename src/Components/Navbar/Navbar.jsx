@@ -4,7 +4,7 @@ import Button from "../Button/Button";
 
 const Navbar = () => {
   return (
-    <div className="w-full h-full px-8 py-6 flex justify-between items-center  ">
+    <div className="w-full h-full px-10 py-6 flex justify-between items-center  ">
       <Link to="/" className="font-bold text-2xl">
         Luxury Estate
       </Link>

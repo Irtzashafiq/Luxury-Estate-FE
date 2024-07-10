@@ -1,4 +1,10 @@
 import "./layout.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHome,
+  faHeadphones,
+  faBuilding,
+} from "@fortawesome/free-solid-svg-icons";
 import Button from "../Components/Button/Button";
 const Layout = () => {
   return (
@@ -63,6 +69,39 @@ const Layout = () => {
             btn="bg-orange-300 hover:bg-orange-400 btnSrch "
             title="Search "
           />
+        </div>
+      </div>
+
+      <div className="flex justify-center items-center mb-20 gap-20 mt-20 ">
+        <div className=" flex flex-col justify-center items-center text-center w-96 ">
+          <div className="FAIcons">
+            <FontAwesomeIcon icon={faHome} />
+          </div>
+          <h1 className="text-2xl">Evaluate Property</h1>
+          <p>
+            If the distribution of letters and words is random, the reader will
+            not be distracted from making.
+          </p>
+        </div>
+        <div className=" flex flex-col justify-center items-center text-center w-96">
+          <div className="FAIcons">
+            <FontAwesomeIcon icon={faHeadphones} />
+          </div>
+          <h1 className="text-2xl">Meeting with Agent</h1>
+          <p>
+            If the distribution of letters and words is random, the reader will
+            not be distracted from making.
+          </p>
+        </div>
+        <div className=" flex flex-col justify-center items-center text-center w-96">
+          <div className="FAIcons">
+            <FontAwesomeIcon icon={faBuilding} />
+          </div>
+          <h1 className="text-2xl">Close the Deal</h1>
+          <p>
+            If the distribution of letters and words is random, the reader will
+            not be distracted from making.
+          </p>
         </div>
       </div>
       {/* <Outlet /> */}
