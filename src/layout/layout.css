@@ -12,12 +12,7 @@
   right: 0;
   height: 80vh;
   background: url("../asset/bgHome.png");
-  background-color: rgba(
-    0,
-    0,
-    0,
-    0.5
-  ); 
+  background-color: rgba(0, 0, 0, 0.5);
   filter: brightness(40%);
   z-index: -1;
 }
@@ -140,6 +135,7 @@
   padding: 1rem;
   border-radius: 1rem;
   transition: all 0.5s;
+  background-color: rgb(251 146 60);
 }
 
 .unselectedButton {

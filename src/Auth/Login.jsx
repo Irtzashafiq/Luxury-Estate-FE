@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../Components/Button/Button";
+import Button1 from "../Components/Button/Button";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -7,8 +7,8 @@ const Login = () => {
   return (
     <div className="logMain p-8 bg-gray-200 rounded-md flex flex-col justify-between items-center">
       <div className="flex w-full bg-gray-200 rounded-md">
-        <Button btn="bg-orange-300  h-full w-full" title="Login" />
-        <Button
+        <Button1 btn="bg-orange-300  h-full w-full" title="Login" />
+        <Button1
           click={() => navigate("/register")}
           btn="shadow-none h-full w-full"
           title="Register"
@@ -43,7 +43,7 @@ const Login = () => {
           </small>
         </div>
       </div>
-      <Button btn="bg-orange-300 hover:bg-orange-400 mt-4 " title="Login" />
+      <Button1 btn="bg-orange-300 hover:bg-orange-400 mt-4 " title="Login" />
     </div>
   );
 };

@@ -1,13 +1,21 @@
 import "./layout.css";
-import asset from "../asset/p1.jpg";
+import p2 from "../asset/p2.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
   faHeadphones,
   faBuilding,
 } from "@fortawesome/free-solid-svg-icons";
-import Button from "../Components/Button/Button";
+import Button1 from "../Components/Button/Button";
+import { Button, IconButton } from "@mui/material";
+import { useState } from "react";
+import PropertyCard from "../Components/PropertyCard/PropertyCard";
 const Layout = () => {
+  const [btnSearchType, setBtnSearchType] = useState("buy");
+  const handleButtonClick = (click) => {
+    setBtnSearchType(click);
+  };
+  const arr = [1, 2, 3, 4, 5, 6, 9, 7];
   return (
     <div className="homePageMainContainer flex flex-col justify-center items-center">
       <div className="backgroundFilter"></div>
@@ -23,10 +31,26 @@ const Layout = () => {
       </div>
       <div className="mainTotalSearchbar ">
         <div className="typeSearchBar">
-          <button className="selectedButton bg-orange-400 hover:bg-orange-300">
+          <Button1
+            className={
+              btnSearchType === "buy"
+                ? `selectedButton hover:bg-orange-300`
+                : `unselectedButton hover:bg-gray-200`
+            }
+            onClick={() => handleButtonClick("buy")}
+          >
             Buy
-          </button>
-          <button className="unselectedButton hover:bg-gray-200">Rent</button>
+          </Button1>
+          <Button1
+            className={
+              btnSearchType === "rent"
+                ? `selectedButton hover:bg-orange-300`
+                : `unselectedButton hover:bg-gray-200`
+            }
+            onClick={() => handleButtonClick("rent")}
+          >
+            Rent
+          </Button1>
         </div>
         <div className="searchBarContainer">
           <div className="seacrhBarContent">
@@ -66,7 +90,7 @@ const Layout = () => {
               />
             </div>
           </div>
-          <Button
+          <Button1
             btn="bg-orange-300 hover:bg-orange-400 btnSrch "
             title="Search "
           />
@@ -83,7 +107,7 @@ const Layout = () => {
             If the distribution of letters and words is random, the reader will
             not be distracted from making.
           </p>
-          <Button
+          <Button1
             btn="bg-orange-300 hover:bg-orange-400 mt-4 "
             title="Find a Home"
           />
@@ -97,7 +121,7 @@ const Layout = () => {
             If the distribution of letters and words is random, the reader will
             not be distracted from making.
           </p>
-          <Button
+          <Button1
             btn="bg-orange-300 hover:bg-orange-400 mt-4 "
             title="Find a Home"
           />
@@ -111,214 +135,19 @@ const Layout = () => {
             If the distribution of letters and words is random, the reader will
             not be distracted from making.
           </p>
-          <Button
+          <Button1
             btn="bg-orange-300 hover:bg-orange-400 mt-4 "
             title="Find a Home"
           />
         </div>
       </div>
       <h1 className="text-3xl font-semibold mb-10">Feature Property</h1>
-      <div className="flex flex-justify-center gap-5">
-        <div className=" h-96 w-72 mb-10  border-2 rounded-lg relative">
-          <img
-            class=" h-1/2 w-full mb-10 object-cover rounded-md"
-            src={asset}
-            alt="No image found"
-          />
-          <h2 className=" flex items-center justify-center text-black text-2xl font-semibold ">
-            5 Marla Commercial{" "}
-          </h2>
-          <p className="text-black pl-4 pt-3">
-            <pre>Price: 5099030 Rs</pre>
-            <pre>BeddRooms: 5</pre>
-            <pre>size: 5 Marla</pre>
-            <pre>location: TownShip</pre>
-          </p>
-        </div>
-        <div className=" h-96 w-72 mb-10  border-2 rounded-lg relative">
-          <img
-            class=" h-1/2 w-full mb-10 object-cover rounded-md"
-            src={asset}
-            alt="No image found"
-          />
-          <h2 className=" flex items-center justify-center text-black text-2xl font-semibold ">
-            5 Marla Commercial{" "}
-          </h2>
-          <p className="text-black pl-4 pt-3">
-            <pre>Price: 5099030 Rs</pre>
-            <pre>BeddRooms: 5</pre>
-            <pre>size: 5 Marla</pre>
-            <pre>location: TownShip</pre>
-          </p>
-        </div>
-        <div className=" h-96 w-72 mb-10  border-2 rounded-lg relative">
-          <img
-            class=" h-1/2 w-full mb-10 object-cover rounded-md"
-            src={asset}
-            alt="No image found"
-          />
-          <h2 className=" flex items-center justify-center text-black text-2xl font-semibold ">
-            5 Marla Commercial{" "}
-          </h2>
-          <p className="text-black pl-4 pt-3">
-            <pre>Price: 5099030 Rs</pre>
-            <pre>BeddRooms: 5</pre>
-            <pre>size: 5 Marla</pre>
-            <pre>location: TownShip</pre>
-          </p>
-        </div>
-        <div className=" h-96 w-72 mb-10  border-2 rounded-lg relative">
-          <img
-            class=" h-1/2 w-full mb-10 object-cover rounded-md"
-            src={asset}
-            alt="No image found"
-          />
-          <h2 className=" flex items-center justify-center text-black text-2xl font-semibold ">
-            5 Marla Commercial{" "}
-          </h2>
-          <p className="text-black pl-4 pt-3">
-            <pre>Price: 5099030 Rs</pre>
-            <pre>BeddRooms: 5</pre>
-            <pre>size: 5 Marla</pre>
-            <pre>location: TownShip</pre>
-          </p>
-        </div>
-      </div>
-
-      <h1 className="text-3xl font-semibold mb-10">Properties For Buy</h1>
-      <div className="flex flex-justify-center gap-5">
-        <div className=" h-96 w-72 mb-10  border-2 rounded-lg relative">
-          <img
-            class=" h-1/2 w-full mb-10 object-cover rounded-md"
-            src={asset}
-            alt="No image found"
-          />
-          <h2 className=" flex items-center justify-center text-black text-2xl font-semibold ">
-            5 Marla Commercial{" "}
-          </h2>
-          <p className="text-black pl-4 pt-3">
-            <pre>Price: 5099030 Rs</pre>
-            <pre>BeddRooms: 5</pre>
-            <pre>size: 5 Marla</pre>
-            <pre>location: TownShip</pre>
-          </p>
-        </div>
-        <div className=" h-96 w-72 mb-10  border-2 rounded-lg relative">
-          <img
-            class=" h-1/2 w-full mb-10 object-cover rounded-md"
-            src={asset}
-            alt="No image found"
-          />
-          <h2 className=" flex items-center justify-center text-black text-2xl font-semibold ">
-            5 Marla Commercial{" "}
-          </h2>
-          <p className="text-black pl-4 pt-3">
-            <pre>Price: 5099030 Rs</pre>
-            <pre>BeddRooms: 5</pre>
-            <pre>size: 5 Marla</pre>
-            <pre>location: TownShip</pre>
-          </p>
-        </div>
-        <div className=" h-96 w-72 mb-10  border-2 rounded-lg relative">
-          <img
-            class=" h-1/2 w-full mb-10 object-cover rounded-md"
-            src={asset}
-            alt="No image found"
-          />
-          <h2 className=" flex items-center justify-center text-black text-2xl font-semibold ">
-            5 Marla Commercial{" "}
-          </h2>
-          <p className="text-black pl-4 pt-3">
-            <pre>Price: 5099030 Rs</pre>
-            <pre>BeddRooms: 5</pre>
-            <pre>size: 5 Marla</pre>
-            <pre>location: TownShip</pre>
-          </p>
-        </div>
-        <div className=" h-96 w-72 mb-10  border-2 rounded-lg relative">
-          <img
-            class=" h-1/2 w-full mb-10 object-cover rounded-md"
-            src={asset}
-            alt="No image found"
-          />
-          <h2 className=" flex items-center justify-center text-black text-2xl font-semibold ">
-            5 Marla Commercial{" "}
-          </h2>
-          <p className="text-black pl-4 pt-3">
-            <pre>Price: 5099030 Rs</pre>
-            <pre>BeddRooms: 5</pre>
-            <pre>size: 5 Marla</pre>
-            <pre>location: TownShip</pre>
-          </p>
-        </div>
-      </div>
-
-      <h1 className="text-3xl font-semibold mb-10">Properties For Sale</h1>
-      <div className="flex flex-justify-center gap-5">
-        <div className=" h-96 w-72 mb-10  border-2 rounded-lg relative">
-          <img
-            class=" h-1/2 w-full mb-10 object-cover rounded-md"
-            src={asset}
-            alt="No image found"
-          />
-          <h2 className=" flex items-center justify-center text-black text-2xl font-semibold ">
-            5 Marla Commercial{" "}
-          </h2>
-          <p className="text-black pl-4 pt-3">
-            <pre>Price: 5099030 Rs</pre>
-            <pre>BeddRooms: 5</pre>
-            <pre>size: 5 Marla</pre>
-            <pre>location: TownShip</pre>
-          </p>
-        </div>
-        <div className=" h-96 w-72 mb-10  border-2 rounded-lg relative">
-          <img
-            class=" h-1/2 w-full mb-10 object-cover rounded-md"
-            src={asset}
-            alt="No image found"
-          />
-          <h2 className=" flex items-center justify-center text-black text-2xl font-semibold ">
-            5 Marla Commercial{" "}
-          </h2>
-          <p className="text-black pl-4 pt-3">
-            <pre>Price: 5099030 Rs</pre>
-            <pre>BeddRooms: 5</pre>
-            <pre>size: 5 Marla</pre>
-            <pre>location: TownShip</pre>
-          </p>
-        </div>
-        <div className=" h-96 w-72 mb-10  border-2 rounded-lg relative">
-          <img
-            class=" h-1/2 w-full mb-10 object-cover rounded-md"
-            src={asset}
-            alt="No image found"
-          />
-          <h2 className=" flex items-center justify-center text-black text-2xl font-semibold ">
-            5 Marla Commercial{" "}
-          </h2>
-          <p className="text-black pl-4 pt-3">
-            <pre>Price: 5099030 Rs</pre>
-            <pre>BeddRooms: 5</pre>
-            <pre>size: 5 Marla</pre>
-            <pre>location: TownShip</pre>
-          </p>
-        </div>
-        <div className=" h-96 w-72 mb-10  border-2 rounded-lg relative">
-          <img
-            class=" h-1/2 w-full mb-10 object-cover rounded-md"
-            src={asset}
-            alt="No image found"
-          />
-          <h2 className=" flex items-center justify-center text-black text-2xl font-semibold ">
-            5 Marla Commercial{" "}
-          </h2>
-          <p className="text-black pl-4 pt-3">
-            <pre>Price: 5099030 Rs</pre>
-            <pre>BeddRooms: 5</pre>
-            <pre>size: 5 Marla</pre>
-            <pre>location: TownShip</pre>
-          </p>
-        </div>
+      <div className="grid lg:grid-cols-3 gap-x-10 place-items-center">
+        {Array(3)
+          .fill(null)
+          .map((val) => (
+            <PropertyCard />
+          ))}
       </div>
 
       {/* <Outlet /> */}

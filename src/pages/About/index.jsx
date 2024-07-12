@@ -1,4 +1,4 @@
-import Button from "../../Components/Button/Button";
+import Button1 from "../../Components/Button/Button";
 import asset from "../../asset/about2.jpg";
 import "./about.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -32,7 +32,7 @@ const About = () => {
       <div className="flex items-center justify-center gap-5 h-96 w-full mb-10 pt-0">
         <img
           src={asset}
-          class=" aboutimg object-cover w-1/7 h-64 sm:h-80 aspect-w-16 aspect-h-9 "
+          className=" aboutimg object-cover w-1/7 h-64 sm:h-80 aspect-w-16 aspect-h-9 "
           alt="No Image found"
         />
 
@@ -46,7 +46,7 @@ const About = () => {
             platform drives efficiency, cost transparency and control into the
             hands of the consumers. Hously is Real Estate Redefined.
           </p>
-          <Button
+          <Button1
             btn="bg-orange-300 hover:bg-orange-400 mt-4 "
             title="Learn More"
           />
@@ -99,7 +99,7 @@ const About = () => {
           A great plateform to buy sell and rent your properties without any
           agent or commissions.
         </p>
-        <Button
+        <Button1
           btn="bg-orange-300 hover:bg-orange-400 mt-4 "
           title="Contact Us"
         />

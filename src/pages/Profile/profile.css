@@ -1,0 +1,23 @@
+.maindiv {
+  border: 2px solid gray;
+  height: 90vh;
+  margin: 2rem 16rem 2rem 16rem;
+}
+
+.ppcontainer {
+  border: 4px solid gray;
+  height: 180px;
+  width: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.pp {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.inputprofilediv {
+  width: 90%;
+}

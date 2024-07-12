@@ -23,10 +23,18 @@ const Footer = () => {
         <div className="flex flex-col items-center justify-center text-center">
           <h1 className="text-white text-3xl font-semibold">Links</h1>
           <div className="flex flex-col mt-4">
-            <Link className="text-white text-lg my-1">Home </Link>
-            <Link className="text-white text-lg my-1">About </Link>
-            <Link className="text-white text-lg my-1">Blogs </Link>
-            <Link className="text-white text-lg my-1">Contact </Link>
+            <Link to={"/"} className="text-white text-lg my-1">
+              Home{" "}
+            </Link>
+            <Link to={"/about"} className="text-white text-lg my-1">
+              About{" "}
+            </Link>
+            <Link to={"/properties"} className="text-white text-lg my-1">
+              Properties{" "}
+            </Link>
+            <Link to={"/contact"} className="text-white text-lg my-1">
+              Contact{" "}
+            </Link>
           </div>
         </div>
         <div className="flex flex-col items-center justify-center text-center">

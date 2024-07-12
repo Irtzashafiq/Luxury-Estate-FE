@@ -1,4 +1,4 @@
-const Button = ({ btn, title, click }) => {
+const Button1 = ({ btn, title, click }) => {
   return (
     <>
       <button
@@ -11,4 +11,4 @@ const Button = ({ btn, title, click }) => {
   );
 };
 
-export default Button;
+export default Button1;

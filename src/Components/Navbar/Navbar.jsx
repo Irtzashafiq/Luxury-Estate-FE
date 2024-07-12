@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import Button from "../Button/Button";
+import Button1 from "../Button/Button";
 
 const Navbar = () => {
   return (
@@ -34,7 +34,7 @@ const Navbar = () => {
           Contact
         </NavLink>
       </div>
-      <Button
+      <Button1
         btn="bg-orange-300 hover:bg-orange-400  "
         title="Login/Register"
       />
