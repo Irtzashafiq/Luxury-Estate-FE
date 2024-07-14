@@ -1,5 +1,4 @@
 import "./layout.css";
-import p2 from "../asset/p2.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
@@ -7,7 +6,6 @@ import {
   faBuilding,
 } from "@fortawesome/free-solid-svg-icons";
 import Button1 from "../Components/Button/Button";
-import { Button, IconButton } from "@mui/material";
 import { useState } from "react";
 import PropertyCard from "../Components/PropertyCard/PropertyCard";
 const Layout = () => {
@@ -15,7 +13,6 @@ const Layout = () => {
   const handleButtonClick = (click) => {
     setBtnSearchType(click);
   };
-  const arr = [1, 2, 3, 4, 5, 6, 9, 7];
   return (
     <div className="homePageMainContainer flex flex-col justify-center items-center">
       <div className="backgroundFilter"></div>
@@ -32,22 +29,24 @@ const Layout = () => {
       <div className="mainTotalSearchbar ">
         <div className="typeSearchBar">
           <Button1
-            className={
+            title="Buy"
+            btn={
               btnSearchType === "buy"
                 ? `selectedButton hover:bg-orange-300`
                 : `unselectedButton hover:bg-gray-200`
             }
-            onClick={() => handleButtonClick("buy")}
+            click={() => handleButtonClick("buy")}
           >
             Buy
           </Button1>
           <Button1
-            className={
+            title="Rent"
+            btn={
               btnSearchType === "rent"
                 ? `selectedButton hover:bg-orange-300`
                 : `unselectedButton hover:bg-gray-200`
             }
-            onClick={() => handleButtonClick("rent")}
+            click={() => handleButtonClick("rent")}
           >
             Rent
           </Button1>
@@ -145,8 +144,8 @@ const Layout = () => {
       <div className="grid lg:grid-cols-3 gap-x-10 place-items-center">
         {Array(3)
           .fill(null)
-          .map((val) => (
-            <PropertyCard />
+          .map((_, index) => (
+            <PropertyCard key={index} />
           ))}
       </div>
 

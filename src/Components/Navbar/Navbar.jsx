@@ -1,8 +1,11 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Button1 from "../Button/Button";
+import UserContext from "../../context/UserContext/userContext";
 
 const Navbar = () => {
+  const contxtUser = useContext(UserContext);
+  const Navigate = useNavigate();
   return (
     <div className="w-full h-full px-10 py-6 flex justify-between items-center  ">
       <Link to="/" className="font-bold text-2xl">
@@ -33,11 +36,33 @@ const Navbar = () => {
         >
           Contact
         </NavLink>
+        {contxtUser.userExist !== "" && (
+          <NavLink
+            to="/profile"
+            className="text-gray-600 hover:text-orange-300 font-semibold mx-6"
+          >
+            Profile
+          </NavLink>
+        )}
       </div>
-      <Button1
-        btn="bg-orange-300 hover:bg-orange-400  "
-        title="Login/Register"
-      />
+      {contxtUser.userExist === "" && (
+        <Button1
+          click={() => Navigate("/login")}
+          btn="bg-orange-300 hover:bg-orange-400  "
+          title="Login/Register"
+        />
+      )}
+      {contxtUser.userExist !== "" && (
+        <Button1
+          click={() => {
+            Navigate("/");
+            localStorage.removeItem("userId");
+            contxtUser.setUserExist("");
+          }}
+          btn="bg-orange-300 hover:bg-orange-400  "
+          title="Logout"
+        />
+      )}
     </div>
   );
 };

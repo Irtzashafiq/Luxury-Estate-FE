@@ -24,6 +24,9 @@ input[type="number"]::-webkit-outer-spin-button {
 .logMain {
   height: 50vh;
   width: 30vw;
+  margin: 0 auto;
+  display: flex;
+  
 }
 .active {
   font-size: 1.125rem;
