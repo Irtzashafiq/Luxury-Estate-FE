@@ -2,9 +2,11 @@ import React, { useContext } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import Button1 from "../Button/Button";
 import UserContext from "../../context/UserContext/userContext";
+import AgencyContext from "../../context/agencyContext/agencyContext";
 
 const Navbar = () => {
   const contxtUser = useContext(UserContext);
+  const contxtAgency = useContext(AgencyContext);
   const Navigate = useNavigate();
   return (
     <div className="w-full h-full px-10 py-6 flex justify-between items-center  ">
@@ -12,6 +14,12 @@ const Navbar = () => {
         Luxury Estate
       </Link>
       <div>
+        <NavLink
+          to="/myproperties"
+          className=" hover:text-orange-300 font-semibold mx-6 "
+        >
+          My Properties
+        </NavLink>
         <NavLink
           to="/properties"
           className=" hover:text-orange-300 font-semibold mx-6 "
@@ -36,14 +44,26 @@ const Navbar = () => {
         >
           Contact
         </NavLink>
-        {contxtUser.userExist !== "" && (
-          <NavLink
-            to="/profile"
-            className="text-gray-600 hover:text-orange-300 font-semibold mx-6"
-          >
-            Profile
-          </NavLink>
-        )}
+        {contxtUser.userExist !== "" &&
+          contxtUser.users.some((val) => val._id === contxtUser.userExist) && (
+            <NavLink
+              to="/profileUser"
+              className="text-gray-600 hover:text-orange-300 font-semibold mx-6"
+            >
+              Profile
+            </NavLink>
+          )}
+        {contxtUser.userExist !== "" &&
+          contxtAgency.agency.some(
+            (val) => val._id === contxtUser.userExist
+          ) && (
+            <NavLink
+              to="/profileAgency"
+              className="text-gray-600 hover:text-orange-300 font-semibold mx-6"
+            >
+              Profile
+            </NavLink>
+          )}
       </div>
       {contxtUser.userExist === "" && (
         <Button1

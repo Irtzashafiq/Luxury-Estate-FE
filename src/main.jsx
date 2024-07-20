@@ -4,12 +4,15 @@ import App from "./App.jsx";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import UserContextState from "./context/UserContext/UserContextState.jsx";
+import AgencyContextState from "./context/agencyContext/agencyContextState.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <UserContextState>
-        <App />
+        <AgencyContextState>
+          <App />
+        </AgencyContextState>
       </UserContextState>
     </BrowserRouter>
   </React.StrictMode>

@@ -10,26 +10,17 @@ import Login from "../Auth/Login";
 import SignUp from "../Auth/SignUp";
 import UserContext from "../context/UserContext/userContext";
 import { useContext, useEffect } from "react";
+import UserProfile from "../pages/Profile/userProfile";
 import AgencyProfile from "../pages/Profile/agencyProfile";
+import MyProperties from "../pages/MyProperties/myproperties";
 
 const AppRoute = () => {
-  const contxtUser = useContext(UserContext);
-  useEffect(() => {
-    console.log(contxtUser.userExist);
-  }, [contxtUser]);
+  // const contxtUser = useContext(UserContext);
 
   return (
     <>
       <Routes>
         <Route path="login" element={<Login />} />
-        <Route
-          path="/"
-          element={
-            <DefaultLayout>
-              <Layout />
-            </DefaultLayout>
-          }
-        />
         <Route path="register" element={<SignUp />} />
         <Route
           path="/"
@@ -38,7 +29,10 @@ const AppRoute = () => {
               <Layout />
             </DefaultLayout>
           }
-        />
+        >
+          <Route path="/properties" element={<Properties />} />
+          <Route path="/myproperties" element={<MyProperties />} />
+        </Route>
 
         <Route
           path="/about"
@@ -48,14 +42,7 @@ const AppRoute = () => {
             </DefaultLayout>
           }
         />
-        <Route
-          path="/properties"
-          element={
-            <DefaultLayout>
-              <Properties />
-            </DefaultLayout>
-          }
-        />
+
         <Route
           path="/agencies"
           element={
@@ -65,7 +52,15 @@ const AppRoute = () => {
           }
         />
         <Route
-          path="/profile"
+          path="/profileUser"
+          element={
+            <DefaultLayout>
+              <UserProfile />
+            </DefaultLayout>
+          }
+        />
+        <Route
+          path="/profileAgency"
           element={
             <DefaultLayout>
               <AgencyProfile />

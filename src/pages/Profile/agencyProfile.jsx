@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./profile.css";
-import pp from "../../asset/pp.png";
 import Button1 from "../../Components/Button/Button";
 import UserContext from "../../context/UserContext/userContext";
 import axios from "axios";
@@ -23,14 +22,18 @@ const AgencyProfile = () => {
   };
   const getUser = async () => {
     await axios
-      .get("http://localhost:3000/users/getuser/:?id=" + contxtUser.userExist)
+      .get(
+        "http://localhost:3000/agency/getAgency/:?id=" + contxtUser.userExist
+      )
       .then((val) => {
         setuserMain(val.data.response);
-        var { username, email, contactInfo, image } = val.data.response;
+        var { username, email, contactInfo, image, description } =
+          val.data.response;
         setInputData({
           username,
           email,
           contactInfo,
+          description,
         });
         setImage(image);
       })
@@ -38,7 +41,7 @@ const AgencyProfile = () => {
   };
   useEffect(() => {
     getUser();
-  }, []);
+  }, [contxtUser.userExist]);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -56,7 +59,6 @@ const AgencyProfile = () => {
     // if (selImage !== null) {
     //   formData.append("image", image);
     // }
-    console.log(inputData);
     formData.append("username", inputData.username);
     formData.append("email", inputData.email);
     formData.append("contactInfo", inputData.contactInfo);
@@ -146,16 +148,7 @@ const AgencyProfile = () => {
               type="password"
             />
           </div>
-          <div className="flex flex-col my-2 ">
-            <strong>Attachment</strong>
-            <input
-              className=" border-2 rounded-lg py-1 px-3 w-[28vw]"
-              name="username"
-              placeholder="type here"
-              type="text"
-            />
-          </div>
-          <div></div>
+
           <div className="flex flex-col mt-4 ">
             <strong>Description</strong>
             <input

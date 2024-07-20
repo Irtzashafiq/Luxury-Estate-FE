@@ -43,14 +43,13 @@ const SignUp = () => {
           navigate("/login");
         }
 
-        console.log(val.data.message);
       })
       .catch((e) => console.log(e));
   };
   return (
-    <div className=" auth">
-      <div className=" p-8 bg-gray-200 rounded-md flex flex-col justify-between items-center">
-        <div className="flex w-full bg-gray-200 rounded-md">
+    <div className=" auth ">
+      <div className=" p-8 w-[100vh] rounded-md flex flex-col justify-between items-center bg-slate-100">
+        <div className="flex w-full bg-slate-200 rounded-md">
           <Button1
             click={() => navigate("/login")}
             btn="shadow-none h-full w-full"
@@ -58,14 +57,14 @@ const SignUp = () => {
           />
           <Button1 btn="bg-orange-300 h-full w-full" title="Register" />
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col w-[80vh]">
           <div className="flex flex-col my-2">
             {" "}
             <strong>User Name</strong>
             <input
               type="text"
               placeholder="Type here"
-              className="px-3 rounded-md py-2  w-96 outline-none"
+              className="px-3 rounded-md py-2 outline-none"
               value={inputData.username}
               onChange={handleChange}
               name="username"
@@ -77,7 +76,7 @@ const SignUp = () => {
             <input
               type="text"
               placeholder="Type here"
-              className="px-3 rounded-md py-2  w-96 outline-none"
+              className="px-3 rounded-md py-2  outline-none"
               value={inputData.email}
               onChange={handleChange}
               name="email"
@@ -89,7 +88,7 @@ const SignUp = () => {
             <input
               type="password"
               placeholder="Type here"
-              className="px-3 rounded-md py-2  w-96 outline-none"
+              className="px-3 rounded-md py-2  outline-none"
               value={inputData.password}
               onChange={handleChange}
               name="password"
@@ -101,7 +100,7 @@ const SignUp = () => {
             <input
               type="password"
               placeholder="Type here"
-              className="px-3 rounded-md py-2  w-96 outline-none"
+              className="px-3 rounded-md py-2  outline-none"
               value={inputData.confirmPassword}
               onChange={handleChange}
               name="confirmPassword"
@@ -113,7 +112,7 @@ const SignUp = () => {
             <input
               type="number"
               placeholder="( +XX ) XXX-XXXXXXX"
-              className="px-3 rounded-md py-2  w-96 outline-none"
+              className="px-3 rounded-md py-2  outline-none"
               value={inputData.contactInfo}
               onChange={handleChange}
               name="contactInfo"

@@ -29,11 +29,24 @@ const Login = () => {
       })
       .catch((e) => console.log(e));
   };
+  const loginAgency = async () => {
+    await axios
+      .post("http://localhost:3000/agency/login", inputData)
+      .then((val) => {
+        window.alert(val.data.message);
+        localStorage.setItem("userId", val.data.agencyId);
+        contxtUser.setUpdateState(!contxtUser.updateState);
+        if (val.data.agencyId !== undefined) {
+          navigate("/");
+        }
+      })
+      .catch((e) => console.log(e));
+  };
 
   return (
     <div className=" auth">
-      <div className="logMain p-8 bg-gray-200 rounded-md flex flex-col justify-between items-center">
-        <div className="flex w-full bg-gray-200 rounded-md">
+      <div className="logMain p-8 bg-slate-100 rounded-md flex flex-col justify-between items-center ">
+        <div className="flex w-full bg-slate-200 rounded-md">
           <Button1 btn="bg-orange-300  h-full w-full" title="Login" />
           <Button1
             click={() => navigate("/register")}
@@ -41,26 +54,26 @@ const Login = () => {
             title="Register"
           />
         </div>{" "}
-        <div className="flex flex-col">
-          <div className="flex flex-col  my-2">
+        <div className="flex flex-col ">
+          <div className="flex flex-col w-[80vh] my-2">
             {" "}
             <strong>Email</strong>
             <input
               type="text"
               placeholder="Type here"
-              className="px-3 rounded-md py-2 w-96 outline-none"
+              className="px-3 rounded-md py-2  outline-none"
               value={inputData.email}
               name="email"
               onChange={handleChange}
             />
           </div>
-          <div className="flex flex-col my-2">
+          <div className="flex flex-col my-2 w-[80vh]">
             {" "}
             <strong>Password</strong>
             <input
               type="password"
               placeholder="Type here"
-              className="px-3 rounded-md py-2 w-96 outline-none"
+              className="px-3 rounded-md py-2  outline-none"
               value={inputData.password}
               name="password"
               onChange={handleChange}
@@ -76,11 +89,18 @@ const Login = () => {
             </small>
           </div>
         </div>
-        <Button1
-          btn="bg-orange-300 hover:bg-orange-400 mt-4 "
-          click={loginUser}
-          title="Login"
-        />
+        <div className="flex gap-2">
+          <Button1
+            btn="bg-orange-300 hover:bg-orange-400 mt-4 "
+            click={loginUser}
+            title="Login User"
+          />
+          <Button1
+            btn="bg-orange-300 hover:bg-orange-400 mt-4 "
+            click={loginAgency}
+            title="Login Agency"
+          />
+        </div>
       </div>
     </div>
   );

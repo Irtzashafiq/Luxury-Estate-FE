@@ -3,7 +3,9 @@ import React from "react";
 import p2 from "../../asset/p2.jpg";
 import CallIcon from "@mui/icons-material/Call";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-const PropertyCard = () => {
+const PropertyCard = ({ property }) => {
+  console.log(property);
+  if (property === undefined) return null;
   return (
     <div className="w-[350px] mb-10  border-2 rounded-lg relative">
       <img
@@ -12,13 +14,13 @@ const PropertyCard = () => {
         alt="No image found"
       />
       <h2 className=" text-black text-2xl font-semibold text-center mt-4">
-        5 Marla Commercial
+        {property.title}
       </h2>
       <div className="px-8 pt-4 text-black">
-        <pre>Price: 5099030 Rs</pre>
-        <pre>BeddRooms: 5</pre>
-        <pre>size: 5 Marla</pre>
-        <pre>location: TownShip</pre>
+        <pre>Price: {property.price}/-</pre>
+        <pre>Bedrooms: {property.bedrooms}</pre>
+        <pre>Size: {property.size} Marla</pre>
+        <pre>Location: {property.location}</pre>
 
         <div className="my-2">
           <IconButton>

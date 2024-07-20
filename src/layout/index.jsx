@@ -8,6 +8,7 @@ import {
 import Button1 from "../Components/Button/Button";
 import { useState } from "react";
 import PropertyCard from "../Components/PropertyCard/PropertyCard";
+import { Outlet } from "react-router-dom";
 const Layout = () => {
   const [btnSearchType, setBtnSearchType] = useState("buy");
   const handleButtonClick = (click) => {
@@ -149,7 +150,7 @@ const Layout = () => {
           ))}
       </div>
 
-      {/* <Outlet /> */}
+      <Outlet />
     </div>
   );
 };

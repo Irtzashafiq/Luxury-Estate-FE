@@ -9,7 +9,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url("./asset/bgMain.jpg");
+  background: url("./asset/bg-home.jpg");
+  /* filter: brightness(40%);    */
+  filter: blur(50%);
   background-position: center;
   background-size: cover;
 }
@@ -23,10 +25,9 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 .logMain {
   height: 50vh;
-  width: 30vw;
+  width: 45vw;
   margin: 0 auto;
   display: flex;
-  
 }
 .active {
   font-size: 1.125rem;
