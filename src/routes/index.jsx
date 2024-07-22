@@ -13,6 +13,7 @@ import { useContext, useEffect } from "react";
 import UserProfile from "../pages/Profile/userProfile";
 import AgencyProfile from "../pages/Profile/agencyProfile";
 import MyProperties from "../pages/MyProperties/myproperties";
+import Home from "../pages/Home/Home";
 
 const AppRoute = () => {
   // const contxtUser = useContext(UserContext);
@@ -30,6 +31,7 @@ const AppRoute = () => {
             </DefaultLayout>
           }
         >
+          <Route path="/" element={<Home />} />
           <Route path="/properties" element={<Properties />} />
           <Route path="/myproperties" element={<MyProperties />} />
         </Route>
