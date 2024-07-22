@@ -3,6 +3,9 @@ import Button1 from "../Components/Button/Button";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import UserContext from "../context/UserContext/userContext";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const Login = () => {
   const contxtUser = useContext(UserContext);
@@ -17,30 +20,38 @@ const Login = () => {
   };
 
   const loginUser = async () => {
-    await axios
-      .post("http://localhost:3000/users/login", inputData)
-      .then((val) => {
-        window.alert(val.data.message);
-        localStorage.setItem("userId", val.data.userId);
-        contxtUser.setUpdateState(!contxtUser.updateState);
-        if (val.data.userId !== undefined) {
-          navigate("/");
-        }
-      })
-      .catch((e) => console.log(e));
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/users/login",
+        inputData
+      );
+      toast.success(response.data.message);
+      localStorage.setItem("userId", response.data.userId);
+      contxtUser.setUpdateState(!contxtUser.updateState);
+      if (response.data.userId !== undefined) {
+        navigate("/");
+      }
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Failed to login.");
+      console.log(error);
+    }
   };
   const loginAgency = async () => {
-    await axios
-      .post("http://localhost:3000/agency/login", inputData)
-      .then((val) => {
-        window.alert(val.data.message);
-        localStorage.setItem("userId", val.data.agencyId);
-        contxtUser.setUpdateState(!contxtUser.updateState);
-        if (val.data.agencyId !== undefined) {
-          navigate("/");
-        }
-      })
-      .catch((e) => console.log(e));
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/agency/login",
+        inputData
+      );
+      toast.success(response.data.message);
+      localStorage.setItem("userId", response.data.agencyId);
+      contxtUser.setUpdateState(!contxtUser.updateState);
+      if (response.data.agencyId !== undefined) {
+        navigate("/");
+      }
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Failed to login.");
+      console.log(error);
+    }
   };
 
   return (
@@ -83,7 +94,10 @@ const Login = () => {
           <div className="flex justify-end ">
             <small>
               Don't have an account?{" "}
-              <strong className=" cursor-pointer text-blue-600 hover:text-blue-700 mt-4">
+              <strong
+                className=" cursor-pointer text-blue-600 hover:text-blue-700 mt-4"
+                onClick={() => navigate("/register")}
+              >
                 Sign Up
               </strong>
             </small>

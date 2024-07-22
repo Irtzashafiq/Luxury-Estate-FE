@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import Button1 from "../Button/Button";
 import UserContext from "../../context/UserContext/userContext";
@@ -8,18 +8,29 @@ const Navbar = () => {
   const contxtUser = useContext(UserContext);
   const contxtAgency = useContext(AgencyContext);
   const Navigate = useNavigate();
+  useEffect(() => {
+    console.log(
+      contxtAgency.agency.some((val) => val._id === contxtUser.userExist)
+    );
+    console.log(contxtUser.userExist);
+  }, [contxtAgency]);
   return (
     <div className="w-full h-full px-10 py-6 flex justify-between items-center  ">
       <Link to="/" className="font-bold text-2xl">
         Luxury Estate
       </Link>
       <div>
-        <NavLink
-          to="/myproperties"
-          className=" hover:text-orange-300 font-semibold mx-6 "
-        >
-          My Properties
-        </NavLink>
+        {contxtUser.userExist !== "" &&
+          contxtAgency.agency.some(
+            (val) => val._id === contxtUser.userExist
+          ) && (
+            <NavLink
+              to="/myproperties"
+              className=" hover:text-orange-300 font-semibold mx-6 "
+            >
+              My Properties
+            </NavLink>
+          )}
         <NavLink
           to="/properties"
           className=" hover:text-orange-300 font-semibold mx-6 "
@@ -38,12 +49,7 @@ const Navbar = () => {
         >
           About
         </NavLink>
-        <NavLink
-          to="/contact"
-          className="text-gray-600 hover:text-orange-300 font-semibold mx-6"
-        >
-          Contact
-        </NavLink>
+
         {contxtUser.userExist !== "" &&
           contxtUser.users.some((val) => val._id === contxtUser.userExist) && (
             <NavLink

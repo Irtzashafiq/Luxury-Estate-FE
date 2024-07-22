@@ -17,7 +17,8 @@ const Properties = () => {
     getProperty();
   }, []);
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex flex-col justify-center items-center mt-[25vh]">
+      <h1 className=" text-4xl font-bold my-10">All Properties</h1>
       <div className="grid grid-cols-3 gap-x-16">
         {properties.length > 0 &&
           properties.map((val) => <PropertyCard property={val} />)}

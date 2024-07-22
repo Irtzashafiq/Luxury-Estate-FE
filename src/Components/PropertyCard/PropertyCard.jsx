@@ -1,16 +1,26 @@
 import { Button, IconButton } from "@mui/material";
-import React from "react";
-import p2 from "../../asset/p2.jpg";
+import React, { useContext, useEffect } from "react";
 import CallIcon from "@mui/icons-material/Call";
+import { DeleteOutline } from "@mui/icons-material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-const PropertyCard = ({ property }) => {
-  console.log(property);
+import UserContext from "../../context/UserContext/userContext";
+import AgencyContext from "../../context/agencyContext/agencyContext";
+const PropertyCard = ({ property, handleDelete }) => {
+  const contxtUser = useContext(UserContext);
+  const contxtAgency = useContext(AgencyContext);
+
+  // useEffect(() => {
+  //   console.log(
+
+  //   );
+  // }, [contxtAgency]);
+
   if (property === undefined) return null;
   return (
     <div className="w-[350px] mb-10  border-2 rounded-lg relative">
       <img
         className="h-[300px] w-full object-cover object-center rounded-md"
-        src={p2}
+        src={`http://localhost:3000/${property.image}`}
         alt="No image found"
       />
       <h2 className=" text-black text-2xl font-semibold text-center mt-4">
@@ -28,6 +38,9 @@ const PropertyCard = ({ property }) => {
           </IconButton>
           <IconButton>
             <CallIcon className="" />
+          </IconButton>
+          <IconButton onClick={handleDelete}>
+            <DeleteOutline className="" />
           </IconButton>
         </div>
         <div className="mb-4">
