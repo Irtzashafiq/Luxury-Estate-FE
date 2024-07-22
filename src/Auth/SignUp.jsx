@@ -207,7 +207,7 @@ const SignUp = () => {
               onChange={(e) => setImage(e.target.files[0])}
             />
           </div>
-          <div class="form-check">
+          <div class="form-check flex items-center">
             <input
               class="form-check-input"
               type="checkbox"
@@ -223,7 +223,10 @@ const SignUp = () => {
           <div className="flex justify-end ">
             <small>
               Already have an account?{" "}
-              <strong className=" cursor-pointer text-blue-600 hover:text-blue-700 mt-4">
+              <strong
+                className=" cursor-pointer text-blue-600 hover:text-blue-700 mt-4"
+                onClick={() => navigate("/login")}
+              >
                 Login
               </strong>
             </small>

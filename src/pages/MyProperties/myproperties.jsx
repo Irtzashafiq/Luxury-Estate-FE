@@ -2,23 +2,22 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import PropertyCard from "../../Components/PropertyCard/PropertyCard";
 import Button1 from "../../Components/Button/Button";
-import AgencyContext from "../../context/agencyContext/agencyContext";
 import UserContext from "../../context/UserContext/userContext";
 import { Modal } from "react-bootstrap";
+import { toast } from "react-toastify";
+
 import CityContext from "../../context/cityContext/cityContext";
-import { Message } from "@mui/icons-material";
+
 const MyProperties = () => {
-  const contxtAgency = useContext(AgencyContext);
+  //#region states
+
   const contxtCity = useContext(CityContext);
   const contxtUser = useContext(UserContext);
   const [properties, setProperties] = useState([]);
   const [updateState, setUpdateState] = useState(-1);
-  const [propertyData, setPropertyData] = useState([]);
   const [propertyModal, setPropertyModal] = useState(false);
   const [image, setImage] = useState(null);
   const [updatefunc, setUpdatefunc] = useState(false);
-
-
 
   const [inputData, setInputData] = useState({
     title: "",
@@ -34,6 +33,8 @@ const MyProperties = () => {
     description: "",
   });
 
+  //#endregion
+  //#region functions
   const getProperty = async () => {
     await axios
       .get("http://localhost:3000/property/getAllProperty")
@@ -44,12 +45,98 @@ const MyProperties = () => {
       .catch((e) => console.log(e));
   };
   const deleteProperty = async (id) => {
-    const dialog = window.confirm("Are You Sure?");
+    const isConfirm = window.confirm("Are You Sure?");
+    if (isConfirm) {
+      await axios
+        .delete("http://localhost:3000/property/deleteProperty:?id=" + id)
+        .then((val) => {
+          if (val.data.message === "deleted Successfully") {
+            toast.success("Deleted Successfully", {
+              position: "bottom-right",
+            });
+
+            setUpdatefunc(!updatefunc);
+            console.log(val.data);
+          } else {
+            toast.error("property not found!", {
+              position: "bottom-right",
+            });
+          }
+        })
+        .catch((e) => console.log(e));
+    } else {
+      toast.error("Something Went Wrong!", {
+        position: "bottom-right",
+      });
+    }
+  };
+  const handleEdit = (val) => {
+    setUpdateState(val._id);
+    setPropertyModal(true);
+    setInputData({
+      title: val.title,
+      location: val.location,
+      price: val.price,
+      size: val.size,
+      bedrooms: val.bedrooms,
+      bathrooms: val.bathrooms,
+      buyOrRent: val.buyOrRent,
+      cityId: val.cityId,
+      propertyType: val.propertyType,
+      phone: val.phone,
+      description: val.description,
+    });
+    setImage(val.image);
+  };
+  const handleUpdateProperty = async () => {
+    const {
+      title,
+      location,
+      price,
+      size,
+      bedrooms,
+      buyOrRent,
+      cityId,
+      propertyType,
+      bathrooms,
+      phone,
+      description,
+    } = inputData;
+    const formData = new FormData();
+    // formData.append("_id", updateState);
+    formData.append("title", title);
+    formData.append("location", location);
+    formData.append("price", price);
+    formData.append("size", size);
+    formData.append("bedrooms", bedrooms);
+    formData.append("bathrooms", bathrooms);
+    formData.append("buyOrRent", buyOrRent);
+    formData.append("propertyType", propertyType);
+    formData.append("phone", phone);
+    formData.append("description", description);
+    formData.append("agency_id", contxtUser.userExist);
+    formData.append("cityId", cityId);
+    formData.append("image", image);
+
     await axios
-      .get("http://localhost:3000/property/deleteProperty:?id=" + id )
+      .put(
+        "http://localhost:3000/property/updateProperty:?id=" + updateState,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      )
       .then((val) => {
-        setProperties(val.data);
-        console.log(properties);
+        setUpdatefunc(!updatefunc);
+        setPropertyModal(false);
+        setUpdateState(-1);
+        toast.success("Updated Successfully", {
+          position: "bottom-right",
+        });
+
+        console.log(val.data);
       })
       .catch((e) => console.log(e));
   };
@@ -65,11 +152,9 @@ const MyProperties = () => {
       size,
       bedrooms,
       buyOrRent,
-      cityId,
       propertyType,
       bathrooms,
       phone,
-      description,
     } = inputData;
     const formData = new FormData();
     formData.append("title", title);
@@ -81,9 +166,6 @@ const MyProperties = () => {
     formData.append("buyOrRent", buyOrRent);
     formData.append("propertyType", propertyType);
     formData.append("phone", phone);
-    formData.append("description", description);
-    formData.append("agency_id", contxtUser.userExist);
-    formData.append("cityId", cityId);
     formData.append("image", image);
 
     await axios
@@ -108,6 +190,7 @@ const MyProperties = () => {
       .catch((e) => console.warn(e));
   };
 
+  //#endregion
   useEffect(() => {
     getProperty();
   }, [updatefunc]);
@@ -125,7 +208,13 @@ const MyProperties = () => {
         {properties.length > 0 &&
           properties
             .filter((val) => val.agency_id === contxtUser.userExist)
-            .map((val) => <PropertyCard property={val} />)}
+            .map((val) => (
+              <PropertyCard
+                property={val}
+                handleDelete={() => deleteProperty(val._id)}
+                handleEdit={() => handleEdit(val)}
+              />
+            ))}
       </div>
       <Modal
         size="lg"
@@ -177,6 +266,7 @@ const MyProperties = () => {
                 <option>Select an option</option>
                 <option value="house">House</option>
                 <option value="flat">Flat</option>
+                <option value="banglo">Banglo</option>
                 <option value="room">Room</option>
                 <option value="residencial plot">Residencial Plot</option>
                 <option value="commercial plot">Commercial Plot</option>
@@ -341,7 +431,7 @@ const MyProperties = () => {
           ) : (
             <Button1
               btn="bg-orange-300 hover:bg-orange-400 mt-4 "
-              // click={handleUpdateProperty}
+              click={handleUpdateProperty}
               title="Update"
             />
           )}

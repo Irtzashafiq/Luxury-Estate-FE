@@ -1,5 +1,5 @@
-import React from "react";
-
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
@@ -9,6 +9,21 @@ import {
 import PropertyCard from "../../Components/PropertyCard/PropertyCard";
 import Button1 from "../../Components/Button/Button";
 const Home = () => {
+  const [properties, setProperties] = useState([]);
+  const getProperty = async () => {
+    await axios
+      .get("http://localhost:3000/property/getAllProperty")
+      .then((val) => {
+        setProperties(val.data);
+        console.log(properties);
+      })
+      .catch((e) => console.log(e));
+  };
+
+  useEffect(() => {
+    getProperty();
+  }, []);
+
   return (
     <div>
       <div className="flex justify-center items-center mb-20 gap-20 mt-20 ">
@@ -55,15 +70,15 @@ const Home = () => {
           />
         </div>
       </div>
-      <h1 className="text-3xl font-semibold mb-10">Feature Property</h1>
+      <h1 className=" flex justify-center text-3xl font-semibold mb-10">
+        Feature Property
+      </h1>
       <div className="grid lg:grid-cols-3 gap-x-10 place-items-center">
-        {Array(3)
-          .fill(null)
-          .map((_, index) => (
-            <PropertyCard key={index} />
-          ))}
+        {properties.length > 0 &&
+          properties.slice(0, 3).map((val) => <PropertyCard property={val} />)}
       </div>
     </div>
+    
   );
 };
 

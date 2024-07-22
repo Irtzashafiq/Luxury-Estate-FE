@@ -37,12 +37,14 @@ const Navbar = () => {
         >
           Properties
         </NavLink>
-        <NavLink
-          to="/agencies"
-          className="text-gray-600 hover:text-orange-300 font-semibold mx-6"
-        >
-          Agencies
-        </NavLink>
+        {contxtUser.userExist !== "" && (
+          <NavLink
+            to="/agencies"
+            className="text-gray-600 hover:text-orange-300 font-semibold mx-6"
+          >
+            Agencies
+          </NavLink>
+        )}
         <NavLink
           to="/about"
           className="text-gray-600 hover:text-orange-300 font-semibold mx-6"
