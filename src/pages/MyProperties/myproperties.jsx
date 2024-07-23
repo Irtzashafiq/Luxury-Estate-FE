@@ -155,6 +155,8 @@ const MyProperties = () => {
       propertyType,
       bathrooms,
       phone,
+      cityId,
+      description,
     } = inputData;
     const formData = new FormData();
     formData.append("title", title);
@@ -167,6 +169,9 @@ const MyProperties = () => {
     formData.append("propertyType", propertyType);
     formData.append("phone", phone);
     formData.append("image", image);
+    formData.append("cityId", cityId);
+    formData.append("description", description);
+    formData.append("agency_id", contxtUser.userExist);
 
     await axios
       .post("http://localhost:3000/property/addproperty", formData, {
